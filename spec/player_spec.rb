@@ -8,7 +8,8 @@ describe Player do
   end
 
   it 'returns player selected weapon' do
-    player.selected_weapon :ROCK
+    weapon = :ROCK
+    player.selected_weapon(weapon)
     expect(player.weapon).to eq :ROCK
   end
 

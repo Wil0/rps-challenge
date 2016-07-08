@@ -5,7 +5,7 @@
     <title> Rock, paper, scissors </title>
   </head>
   <body>
-    <h1>  <%=@game.win.nil? %>
+    <h1>  <%= @winner %>
     <form action='/play' method='get'>
       <input type='submit' value='Restart!'/>
     </form>

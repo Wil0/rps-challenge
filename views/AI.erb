@@ -6,23 +6,23 @@
   </head>
   <body>
 
-    <% if @machine.choose_weapon == 'PAPER'%>
+    <% if @machine == 'PAPER'%>
       <img src="https://www.geriatricmedical.com/UserFiles/Images/Products/Toliet_tissue_bathroom.jpg"/>
       <% end %>
 
-    <% if @machine.choose_weapon == 'ROCK'%>
+    <% if @machine == 'ROCK'%>
       <img src="http://az616578.vo.msecnd.net/files/2016/04/12/6359601932026675251094891209_key%20holder.jpg"/>
     <% end %>
 
-    <% if @machine.choose_weapon == 'SCISSORS'%>
+    <% if @machine == 'SCISSORS'%>
       <img src="http://www.whsmith.co.uk/pws/client/images/catalogue/products/8562/18//xlarge/856218_1.jpg"/>
     <% end %>
 
     <div id='machine'>
+      <form action='/result' method='get'>
+        <h1>The machine has chosen <%= @machine %>!</h1>
+        <input type='submit' value='continue'/>
+      </form>
 
-      <h1>The machine has chosen <%= @machine.choose_weapon %>!</h1>
 
     </div>
- <form action='/result' method='get'>
-   <input type='submit' value='continue'/>
- </form>

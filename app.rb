@@ -11,37 +11,38 @@ class RPS < Sinatra::Base
   end
 
   post '/name' do
-    player1 = Player.new(params[:name])
-    player2 = Machine.new
-    Game.set_game(player1, player2)
+    session[:game] = Game.set_game(Player.new(params[:name]),  Machine.new)
     redirect '/play'
   end
 
   get '/play' do
-    @game = Game.instance
+    @game = session[:game]
     erb :play
   end
 
+  before do
+    @game = session[:game]
+  end
+
   post '/weapon' do
-    @game = Game.instance
-    session[:weapon] = @game.player.selected_weapon(params[:weapon])
+    session[:player] = @game.player.selected_weapon(params[:weapon])
     redirect '/weapon'
   end
 
   get '/weapon' do
-    @game = Game.instance
-    erb :weapon
+    @weapon = session[:player]
+    erb :'/weapon'
   end
 
   get '/AI' do
-    @game = Game.instance
-    @machine = Machine.new
-    erb :AI
+    session[:machine] = @game.machine_option
+    erb :'/AI'
   end
 
   get '/result' do
-    @game = Game.instance
-    session[:weapon]
+    p session[:machine].to_s
+    p session[:player]
+    p @winner = @game.win(session[:player], session[:machine].to_s)
     erb :result
   end
 

@@ -4,8 +4,7 @@ class Player
     @name = name
   end
 
-  def selected_weapon weapon= :ROCK
+  def selected_weapon(weapon)
     @weapon = weapon
   end
-
 end

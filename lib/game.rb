@@ -29,16 +29,19 @@ class Game
     machine.choose_weapon
   end
 
-  def win
-    winner
+  def win(p1, p2)
+    p @player.name
+    if self.player_option == self.machine_option
+      'DRAW!'
+    elsif self.player_option == "Paper"
+      @player.name if self.machine_option == "Rock"
+      'Machine wins!' if self.machine_option == "Scissors"
+    elsif self.player_option == "Scissors"
+      @player.name if self.machine_option == "Paper"
+      'Machine wins!' if self.machine_option == "Rock"
+    elsif self.player_option == "Rock"
+      @player.name if self.machine_option == "Scissors"
+      'Machine wins!' if self.machine_option == "Paper"
+    end
   end
-
-private
-
-def winner
-  return 'DRAW!' if RULES[machine_option][player_option].to_s == 'DRAW'
-  return 'Machine wins!' if RULES[machine_option][player_option].to_s == '1'
-  return "#{@player.name} wins!" if RULES[machine_option][player_option].to_s == '2'
-end
-
 end

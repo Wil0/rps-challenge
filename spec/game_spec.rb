@@ -38,21 +38,21 @@ describe Game  do
     context 'it is a draw' do
       it ' returns draw' do
       allow(game).to receive(:machine_option.to_s).and_return :ROCK
-      expect(game.win).to eq "DRAW!"
+      expect(game.win(player, machine)).to eq "DRAW!"
       end
     end
 
     context 'player wins' do
       it 'returns 2' do
       allow(game).to receive(:machine_option.to_s).and_return :SCISSORS
-      expect(game.win).to eq "#{player.name} wins!"
+      expect(game.win(player, machine)).to eq "#{player.name} wins!"
       end
     end
 
       context 'machine wins' do
         it 'returns 1' do
         allow(game).to receive(:machine_option.to_s).and_return :PAPER
-        expect(game.win).to eq "Machine wins!"
+        expect(game.win(player, machine)).to eq "Machine wins!"
         end
       end
   end

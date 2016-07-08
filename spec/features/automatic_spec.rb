@@ -1,4 +1,4 @@
-feature 'Machine' do
+feature 'player 2' do
   scenario 'shows chosen weapon' do
     visit '/AI'
     message = find(:css, '#machine').text
